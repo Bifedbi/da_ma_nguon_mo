@@ -50,10 +50,10 @@ export default async function Home({ searchParams }: HomeProps) {
       {!q && (
         <section className="bg-linear-to-r from-blue-600 to-indigo-700 text-white py-20 text-center rounded-b-[3rem] shadow-xl mx-2 md:mx-0">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md">
-            Thế Giới Đồ Chơi 🚀
+            Thế giới đồ chơi 🚀
           </h1>
           <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Mang niềm vui và trí tuệ đến cho bé yêu qua từng món quà nhỏ.
+            Mang niềm vui và trí tuệ đến cho mọi người qua món quà vô giá
           </p>
           <Link 
             href="/products" 

@@ -41,7 +41,7 @@ export default async function AllProductsPage({ searchParams }: PageProps) {
       </div>
 
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Kho Đồ Chơi Của Bé</h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Kho đồ chơi khổng lồ</h1>
         <p className="text-gray-500">Khám phá hàng trăm món đồ chơi thú vị và bổ ích</p>
       </div>
 

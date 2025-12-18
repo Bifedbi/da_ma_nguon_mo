@@ -4,10 +4,9 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from 'react';
-import Link from "next/link"; // Đã import Link đúng
+import Link from "next/link";
 
 export default function AdminPage() {
-  // 1. SỬA LỖI: Lấy thêm biến 'status' từ useSession
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -17,7 +16,8 @@ export default function AdminPage() {
     description: '',
     price: '',
     image: '',
-    category: 'Xếp hình',
+    // 1. SỬA: Đổi mặc định thành 'Lắp ráp'
+    category: 'Lắp ráp', 
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,8 @@ export default function AdminPage() {
 
       if (res.ok) {
         setMessage('✅ Thêm sản phẩm thành công!');
-        setFormData({ name: '', description: '', price: '', image: '', category: 'Xếp hình' });
+        // 2. SỬA: Reset về 'Lắp ráp' sau khi thành công
+        setFormData({ name: '', description: '', price: '', image: '', category: 'Lắp ráp' });
       } else {
         setMessage('❌ Có lỗi xảy ra. Vui lòng thử lại.');
       }
@@ -64,34 +65,30 @@ export default function AdminPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-8 bg-white shadow-lg rounded-2xl mt-10 border mb-20">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">Quản Trị Viên</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Quản trị viên</h1>
 
-      {/* --- 2. THÊM MỚI: Khu vực nút bấm điều hướng --- */}
       <div className="flex gap-4 mb-8">
         <Link 
             href="/admin/orders" 
             className="flex-1 bg-indigo-600 text-white p-4 rounded-xl shadow hover:bg-indigo-700 transition text-center font-bold flex flex-col items-center justify-center gap-2"
         >
             <span className="text-2xl">📦</span>
-            <span>Quản Lý Đơn Hàng</span>
+            <span>Quản lý đơn hàng</span>
         </Link>
         <div className="flex-1 bg-gray-50 border p-4 rounded-xl text-center text-gray-400 flex items-center justify-center text-sm">
             (Tính năng khác đang phát triển...)
         </div>
       </div>
       <hr className="my-8 border-gray-200" />
-      {/* ----------------------------------------------- */}
 
-      <h2 className="text-xl font-bold mb-4 text-gray-700">Thêm Sản Phẩm Mới</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-700">Thêm sản phẩm mới</h2>
       
-      {/* Thông báo */}
       {message && (
         <div className={`p-4 mb-4 rounded-lg text-white ${message.includes('✅') ? 'bg-green-500' : 'bg-red-500'}`}>
           {message}
         </div>
       )}
 
-      {/* Form nhập liệu (Giữ nguyên như cũ) */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block font-medium text-gray-700 mb-1">Tên đồ chơi</label>
@@ -127,10 +124,11 @@ export default function AdminPage() {
             onChange={handleChange}
             className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
           >
-            <option value="Xếp hình">Xếp hình</option>
-            <option value="Gấu bông">Gấu bông</option>
-            <option value="Xe cộ">Xe cộ</option>
-            <option value="Búp bê">Búp bê</option>
+            {/* 3. SỬA: Cập nhật danh sách option mới */}
+            <option value="Lắp ráp">Lắp ráp</option>
+            <option value="Nhồi bông">Nhồi bông</option>
+            <option value="Mô hình xe">Mô hình xe</option>
+            <option value="Trí tuệ">Trí tuệ</option>
             <option value="Giáo dục">Giáo dục</option>
           </select>
         </div>

@@ -6,7 +6,7 @@ interface ProductProps {
     _id: string;
     name: string;
     price: number;
-    image: string;
+    image: string; // Giữ nguyên tên biến image như code cũ của bạn
     category: string;
   }
 }
@@ -36,16 +36,20 @@ export default function ProductCard({ product }: ProductProps) {
           </h3>
         </Link>
         
-        <div className="mt-auto flex items-center justify-between">
+        <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3">
           <span className="text-xl font-bold text-red-600">
             {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
           </span>
           
-          <button className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
+          {/* --- THAY ĐỔI Ở ĐÂY: Xóa nút Button, thay bằng Link xem chi tiết --- */}
+          <Link 
+            href={`/products/${product._id}`}
+            className="text-sm text-gray-400 hover:text-blue-600 transition flex items-center gap-1"
+          >
+            Chi tiết &rarr;
+          </Link>
+          {/* ------------------------------------------------------------------ */}
+          
         </div>
       </div>
     </div>
